@@ -6,14 +6,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace _04_Change_Calculator
+namespace _04_MortgageCalc
 {
     class JeffToolBox
     {
         public static decimal StringtoDecimal(string myString)
         {
-
-
             decimal myDecimal = Convert.ToDecimal(myString);
 
             return myDecimal;
@@ -42,27 +40,6 @@ namespace _04_Change_Calculator
             string totalSqFt = sqft.ToString();
 
             return totalSqFt;
-        }
-
-        public static string testIntergersOnly(string myString)
-        {
-            while (true)
-            {
-                try
-                {
-
-
-                }
-
-                catch
-                {
-
-
-                }
-
-
-            }
-
         }
 
         public bool IsDigitsOnly(string str)
@@ -94,8 +71,6 @@ namespace _04_Change_Calculator
             }
 
             return true;
-
-
         }
 
         public static string RemoveSpecialCharacters(string str)
@@ -155,6 +130,14 @@ namespace _04_Change_Calculator
 
                         continue;
                     }
+
+                    if ((returnValue * 2 > Decimal.MaxValue) || (returnValue * 3 > Decimal.MaxValue))
+                    {
+                        Console.WriteLine("---------------- \n \n");
+                        Console.WriteLine("Please enter a smaller number, dont be a hacker...");
+                        continue;
+                    }
+
 
                     return returnValue;
                 }
@@ -232,12 +215,98 @@ namespace _04_Change_Calculator
                 }
             }
         }
+        public static decimal ReadInterestRate(string message, bool positiveNumber = false, bool acceptZero = true)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine(message);
 
+                    string input = Console.ReadLine();
+
+                    input = JeffToolBox.RemoveSpecialCharacters(input);
+
+                    decimal returnValue = decimal.Parse(input);
+
+                    if (positiveNumber == true && returnValue < 0)
+                    {
+                        Console.WriteLine("Please enter a positive number");
+
+                        continue;
+                    }
+                    if (acceptZero == false && returnValue == 0)
+                    {
+                        Console.WriteLine("Please enter a number other than 0");
+
+                        continue;
+                    }
+
+                    if ((returnValue * 2 > Decimal.MaxValue) || (returnValue * 3 > Decimal.MaxValue))
+                    {
+                        Console.WriteLine("---------------- \n \n");
+                        Console.WriteLine("Please enter a smaller number, dont be a hacker...");
+                        continue;
+                    }
+
+                    if(returnValue > 100)
+                    {
+                        Console.WriteLine("---------------- \n \n");
+                        Console.WriteLine("You cant have an interest rate larger than 100%!");
+                        Console.WriteLine("Please enter an Interest Rate between 0 - 100.");
+                        continue;
+
+
+
+                    }
+
+
+                    return returnValue;
+                }
+                catch (ArgumentNullException e)
+                {
+                    Console.WriteLine("Please enter a value");
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("Please enter a numerical value");
+                }
+                catch (OverflowException e)
+                {
+                    Console.WriteLine("Please enter a reasonably sized number");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("There was an error reading this decimal");
+                }
+            }
+        }
+
+        public static double ConvertDoubleDecimal(decimal decimalVal)
+        {
+
+            double doubleVal;
+
+            // Decimal to double conversion cannot overflow.
+            doubleVal = System.Convert.ToDouble(decimalVal);
+           
+
+            // Conversion from double to decimal can overflow.
+            try
+            {
+                decimalVal = System.Convert.ToDecimal(doubleVal);
+               
+            }
+            catch (System.OverflowException)
+            {
+                System.Console.WriteLine(
+                    "Overflow in double-to-double conversion.");
+            }
+
+            return doubleVal;
+        }
 
     }//End class
-
-
-
 
 } // End NameSpace
 

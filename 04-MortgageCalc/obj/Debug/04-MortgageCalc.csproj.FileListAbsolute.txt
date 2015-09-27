@@ -1,1 +1,6 @@
 C:\Users\jward01\Documents\Visual Studio 2015\Projects\04-MortgageCalc\04-MortgageCalc\bin\Debug\04-MortgageCalc.exe.config
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\04-MortgageCalc\04-MortgageCalc\bin\Debug\04-MortgageCalc.exe
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\04-MortgageCalc\04-MortgageCalc\bin\Debug\04-MortgageCalc.pdb
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\04-MortgageCalc\04-MortgageCalc\obj\Debug\04-MortgageCalc.csprojResolveAssemblyReference.cache
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\04-MortgageCalc\04-MortgageCalc\obj\Debug\04-MortgageCalc.exe
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\04-MortgageCalc\04-MortgageCalc\obj\Debug\04-MortgageCalc.pdb
