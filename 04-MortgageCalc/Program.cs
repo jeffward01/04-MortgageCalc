@@ -19,6 +19,10 @@ namespace _04_MortgageCalc
         public static double interest = 0;
        public static string principleInput, yearsInput, interestInput;
         public static string finalMonthlyPayment;
+        public static double downPaymentdbl = 0;
+
+
+
 
 
 
@@ -41,6 +45,11 @@ namespace _04_MortgageCalc
         public static void GetInfo()
         {
             // User input for Principle amount in dollars
+
+            decimal downPaymentDec = JeffToolBox.ReadCurrency("Enter the DownPayment amount, (If any) in dollars(0000.00)", true, true);
+            downPaymentdbl = Convert.ToDouble(downPaymentdbl);
+
+
             decimal DprincipleInput = JeffToolBox.ReadCurrency("Enter the loan amount, in dollars(0000.00)", true, false);
 
 
@@ -71,6 +80,10 @@ namespace _04_MortgageCalc
             double loanM = (interest / 1200.0);
             double numberMonths = years * 12;
             double negNumberMonths = 0 - numberMonths;
+            principle = principle - downPaymentdbl;
+
+            string TotalDownPayment = downPaymentdbl.ToString("C");
+
             double monthlyPayment = principle * loanM / (1 - System.Math.Pow((1 + loanM), negNumberMonths));
 
 
@@ -86,13 +99,15 @@ namespace _04_MortgageCalc
 
             //Output the result of the monthly payment
             Console.WriteLine(DLine);
-            Console.WriteLine("The total amount of the loan is: {0}", totalLoanAmount);
-            Console.WriteLine("The number of monthly payments is: {0}", numberMonths);
-            Console.WriteLine(String.Format("The amount of the monthly payment is: {0}", finalMonthlyPayment));
-            Console.WriteLine("The total cost of the Mortgage is: {0}",totalMortCost);
-            Console.WriteLine("The total Interest Earned is: {0}", TotalInterestPaid);
+            Console.WriteLine("-------Mortgage Information------- \n");
+            Console.WriteLine("-   You made a downpayment of: {0}" , downPaymentdbl.ToString("C"));
+            Console.WriteLine("-   The total amount of the loan is: {0}", totalLoanAmount);
+            Console.WriteLine("-   The number of monthly payments is: {0}", numberMonths);
+            Console.WriteLine(String.Format("-   The amount of the monthly payment is: {0}", finalMonthlyPayment));
+            Console.WriteLine("-   The total cost of the Mortgage is: {0}",totalMortCost);
+            Console.WriteLine("-  The total Interest Earned is: {0}", TotalInterestPaid);
             Console.WriteLine();
-            Console.WriteLine("Press the Enter key to end. . .");
+            Console.WriteLine("-  Press the Enter key to end. . .");
             Console.Read();
 
         }
