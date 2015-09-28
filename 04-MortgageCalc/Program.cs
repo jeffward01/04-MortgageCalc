@@ -109,7 +109,6 @@ namespace _04_MortgageCalc
         public static void calcMort()
         {
             //Calculate the monthly payment
-            //ADD IN THE .Net function call Math.pow(x, y) to compute xy (x raised to the y power). 
             double loanM = (interest / 1200.0);
              numberMonths = years * 12;
            double negNumberMonths = 0 - numberMonths;
