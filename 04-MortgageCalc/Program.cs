@@ -119,8 +119,6 @@ namespace _04_MortgageCalc
              monthlyPayment = principle * loanM / (1 - System.Math.Pow((1 + loanM), negNumberMonths));
 
 
-
-
             finalMonthlyPayment = monthlyPayment.ToString("C");
             totalLoanAmount = principle.ToString("C");
 
@@ -166,10 +164,17 @@ namespace _04_MortgageCalc
                     break;
                 case "save":
                     //Save Function here
+                    Console.WriteLine("Save function is under-development");
+                    Console.WriteLine("Press Enter to go back");
+                    Console.ReadLine();
+                    displayQuote();
                     break;
                 case "new":
                     //Function to execute everything here
-
+                    Console.Clear();
+                    Console.WriteLine(DLine);
+                    Console.WriteLine("Press enter to start a new quote");
+                    RunProgram();
                     break;
                 case "exit":
                     Environment.Exit(0);
@@ -219,6 +224,10 @@ namespace _04_MortgageCalc
         public static void RunProgram()
         {
             //Run Program again functions in here
+            ProgramIntro();
+            GetInfo();
+            calcMort();
+
 
         }
         static void Main(string[] args)
