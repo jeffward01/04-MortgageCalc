@@ -45,11 +45,21 @@ namespace _04_MortgageCalc
         //Total Amount of Interest applied
         public static decimal TotalInterest = Convert.ToDecimal(interestEarned);
 
+        //Monthly Interest Payment
+        public static decimal MonthlyInterestPayment = TotalInterest / NumberOfMonthlyPayments;
+
+        //Monthly Principle Payment 
+        public static decimal monthlyPrinciplePayment = MonthlyPaymentDollarAmount - MonthlyInterestPayment;
+
         //Interest Rate
         public static decimal InterestRateDecimal = Convert.ToDecimal(interest);
 
-    
+        //Current Date
+        public static DateTime currentDate = DateTime.Now;
 
+
+        //----------------------------------
+        //Start Methods below for program
         public static void ProgramIntro()
         {
             Console.WriteLine(DLine);
@@ -173,11 +183,19 @@ namespace _04_MortgageCalc
 
 
         }
+        //Build out this function to print out number of months
         public static void monthByMonth(decimal MonthCounter)
         {
             int counter = Convert.ToInt32(MonthCounter);
 
-
+            for (var i = 0; i <= counter; i++)
+            {
+                Console.WriteLine("Date: {0} - Priciple Payment: {1}  || Interest Payment: {2} || Total Monthly Payment: {3}", currentDate.AddMonths(i).ToShortDateString(), monthlyPrinciplePayment.ToString("C"), MonthlyInterestPayment.ToString("C"), finalMonthlyPayment);
+                
+            }
+            Console.WriteLine("Press Enter to return to option menu... Smiley Face");
+            Console.ReadLine();
+            displayQuote();
 
         }
         public static void exit()
